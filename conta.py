@@ -11,11 +11,14 @@ class Conta:
     def extrato(self):
         print("Saldo {} do titular {}".format(self.__saldo, self.__titular))
 
-    def deposita(self, valor):
+    def depositar(self, valor):
         self.__saldo += valor
 
     def saque(self, valor):
-        if (valor <= self.saldo):
+        if (valor <= self.__saldo):
             self.__saldo -= valor
         else:
             print("saldo baixo")
+    def transferir(self, valor, destino):
+        self.saque(valor)
+        destino.depositar(valor)
